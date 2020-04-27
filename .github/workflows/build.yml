@@ -7,14 +7,9 @@ jobs:
   test:
     name: Build
     runs-on: macOS-latest
-    strategy:
-        matrix:
-          destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11']
     steps:
       - name: Checkout
         uses: actions/checkout@master
       - name: Build and Text
         run: |
-          xcodebuild clean build -project HelloWorld.xcodeproj -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        env: 
-         destination: ${{ matrix.destination }}
+          xcodebuild -project HelloWorld.xcodeproj -scheme CLI -sdk iphonesimulator10.3 clean analyze
