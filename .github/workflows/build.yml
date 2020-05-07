@@ -12,6 +12,6 @@ jobs:
         uses: actions/checkout@master
       - name: Build and Text
         run: |
-          security -help
+          security help
           pod --version
           xcodebuild -project HelloWorld.xcodeproj IPHONEOS_DEPLOYMENT_TARGET="13.2.99" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO
